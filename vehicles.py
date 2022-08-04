@@ -9,12 +9,12 @@ class Particle:
         else: 
             self.position = pygame.Vector2(x, y)
         self.initial_position = pygame.Vector2(self.position)
-        self.velocity = pygame.Vector2(random.uniform(-2, 2), random.uniform(-2, 2))
+        self.velocity = pygame.Vector2()
         self.b = b
         self.acceleration = pygame.Vector2()
-        self.maxspeed = 1.5
-        self.maxforce = 0.5
-        self.velocity = self.velocity.normalize() * self.maxspeed
+        self.maxspeed = 4
+        self.maxforce = 1.5
+        # self.velocity = self.velocity.normalize() * self.maxspeed
 
     def apply_force(self, force):
         self.acceleration += force
@@ -60,10 +60,13 @@ class Particle:
         # Limit steer
         steer = self.limit(self.maxforce, steer)
 
-        if D.magnitude_squared() < 900:
-            steer = pygame.Vector2()
-        if D.magnitude_squared() < 50:
+        # if D.magnitude_squared() < 900:
+        #     steer = pygame.Vector2()
+        if D.magnitude_squared() < 30:
             self.position = pygame.Vector2(self.initial_position)
+            self.velocity = pygame.Vector2()
+            self.acceleration = pygame.Vector2()
+            steer = pygame.Vector2()
     
         return self.apply_force(steer)
     
@@ -76,5 +79,5 @@ class Particle:
         
         steer = neg_desired - self.velocity
         steer = self.limit(self.maxforce * 700, steer)
-        return self.apply_force(-steer)
+        return self.apply_force(-steer * 10)
 
