@@ -7,28 +7,34 @@ import numpy as np
 import pygame
 
 
-altura = 600
-largura = 600
+altura = 720
+largura = 720
 gray = (50, 50, 50)
 black = (0, 0, 0)
 white = (255, 255, 255)
+background = white
+ball_color = gray
 fps = 60
 
-img = cv.imread("cic.png")
-img = cv.resize(img, [600, 600])
+img = cv.imread("assets/alexia.png")
+img = cv.resize(img, [720, 720])
 img_gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
 
-# print(img_gray)
+print(img.shape)
 t = 0
 bs = []
 particules = []
-for i in range(0, len(img_gray), 5):
-    for j in range(0, len(img_gray[i]), 5):
+on_move = set()
+for i in range(0, len(img_gray), 4):
+    for j in range(0, len(img_gray[i]), 4):
         bs.append(float(img_gray[i][j]))
-        b = float(img_gray[i][j])
+        b = 256 - float(img_gray[i][j])
+        color = img[i][j]
+        color[0], color[-1] = color[-1], color[0]
         raio = (b / 255) * 4
-        particules.append(Particle(raio, j, i))
-
+        if raio >= 1:
+            particules.append(Particle(raio, j, i, ball_color))
+print(len(particules))
 pygame.init()
 relogio = pygame.time.Clock()
 window = pygame.display.set_mode((largura, altura))
@@ -39,7 +45,10 @@ while continua:
 
     # Random Walker
     # target2 += pygame.Vector2(random.uniform(-5, 5), random.uniform(-5, 5))
+
     target2 = pygame.mouse.get_pos()
+    # if target2[0] >= largura-10 or target2[0] <= 10 or target2[1] >= altura - 10 or target2[1] <= 10:
+    #     target2 = pygame.Vector2(-200, -200)
     for event in pygame.event.get():
         #print(event)
         if event.type == pygame.QUIT:
@@ -52,16 +61,20 @@ while continua:
                     v.position = pygame.Vector2(v.initial_position)
 
     
-    window.fill(gray)
+    window.fill(background)
 
     for v in particules:
         
         D = v.position - target2
         if D.magnitude_squared() < 1600:
             v.repulsion(target2)
-        else:
+            if v not in on_move:
+                on_move.add(v)
+        elif v in on_move:
             v.seek(target=v.initial_position)
-        pygame.draw.circle(window, white, v.position, v.b)
+            if v.flag_on_move:
+                on_move.remove(v)
+        pygame.draw.circle(window, v.color, v.position, v.b)
 
 
 
