@@ -66,7 +66,7 @@ while continua:
     for v in particules:
         
         D = v.position - target2
-        if D.magnitude_squared() < 1600:
+        if D.magnitude_squared() < 1200:
             v.repulsion(target2)
             if v not in on_move:
                 on_move.add(v)

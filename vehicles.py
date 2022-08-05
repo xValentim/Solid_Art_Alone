@@ -76,16 +76,16 @@ class Particle:
             self.acceleration = pygame.Vector2()
             steer = pygame.Vector2()
     
-        return self.apply_force(steer/4)
+        return self.apply_force(steer/2)
     
     def repulsion(self, position):
         neg_desired = position - self.position
         try:
-            neg_desired = neg_desired.normalize() * self.maxspeed * 700
+            neg_desired = neg_desired.normalize() * self.maxspeed 
         except:
             neg_desired = pygame.Vector2()
         
         steer = neg_desired - self.velocity
-        steer = self.limit(self.maxforce * 700, steer)
-        return self.apply_force((-steer / self.b) * 10 )
+        steer = self.limit(self.maxforce, steer)
+        return self.apply_force((-steer / self.b))
 
