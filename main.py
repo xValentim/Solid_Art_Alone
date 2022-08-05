@@ -16,6 +16,7 @@ fps = 60
 
 img = cv.imread("cic.png")
 img = cv.resize(img, [600, 600])
+cv.imshow('img', img)
 img_gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
 
 # print(img_gray)
