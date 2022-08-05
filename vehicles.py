@@ -79,5 +79,5 @@ class Particle:
         
         steer = neg_desired - self.velocity
         steer = self.limit(self.maxforce * 700, steer)
-        return self.apply_force(-steer * 10)
+        return self.apply_force((-steer / self.b) * 10 )
 
