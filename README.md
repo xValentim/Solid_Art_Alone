@@ -16,13 +16,18 @@ We use OpenCv to read image like a np.array, then we use grayscale to determines
 We use a image for this presentation and we use our code to transform some pixels in a Vehicle. 
 
 > The input will be a image below:
-![The most beatiful girl I ever met](assets/alexia.png)
+<img src="assets/alexia.png" alt="The most beatiful girl I ever met" width="300"/>
+
+<!-- ![The most beatiful girl I ever met](assets/alexia.png) -->
+
 
 > The transform will be this (note that we not convert all the pixels in Vehicles):
-![Input](output/00001_screenshot.png)
+<img src="output/00001_screenshot.png" alt="Input" width="300"/>
+<!-- ![Input](output/00001_screenshot.png) -->
 
 > Finally, we will create this video with our simulation:
-![Results](alexia_steer.gif)
+<img src="alexia_steer.gif" alt="Results" width="300"/>
+<!-- ![Results](alexia_steer.gif) -->
 
 # To Run:
 
