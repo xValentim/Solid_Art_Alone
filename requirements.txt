@@ -1,0 +1,6 @@
+joblib==1.1.0
+numpy==1.23.1
+opencv-python==4.6.0.66
+pycodestyle==2.8.0
+pygame==2.1.2
+starlette==0.17.1
