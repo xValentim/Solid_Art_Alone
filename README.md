@@ -15,7 +15,7 @@ We use OpenCv to read image like a np.array, then we use grayscale to determines
 
 We use a image for this presentation and we use our code to transform some pixels in a Vehicle. 
 
-> The input will be a image below:
+> The input will be a image below (The most beatiful girl I ever met):
 <img src="assets/alexia.png" alt="The most beatiful girl I ever met" width="300"/>
 
 <!-- ![The most beatiful girl I ever met](assets/alexia.png) -->
