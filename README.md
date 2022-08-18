@@ -18,9 +18,6 @@ We use a image for this presentation and we use our code to transform some pixel
 > The input will be a image below (The most beatiful girl I ever met):
 <img src="assets/alexia.png" alt="The most beatiful girl I ever met" width="300"/>
 
-<!-- ![The most beatiful girl I ever met](assets/alexia.png) -->
-
-
 > The transform will be this (note that we not convert all the pixels in Vehicles):
 <img src="output/00001_screenshot.png" alt="Input" width="300"/>
 <!-- ![Input](output/00001_screenshot.png) -->
