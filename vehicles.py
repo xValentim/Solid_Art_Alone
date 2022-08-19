@@ -3,17 +3,20 @@ import random
 
 class Particle:
 
-    def __init__(self, b=1, x=None, y=None):
+    def __init__(self, b=1, x=None, y=None, color=(200, 200, 200), real_color=True):
         if x is None and y is None:
             self.position = pygame.Vector2(random.uniform(0, 900), random.uniform(0, 900))
         else: 
             self.position = pygame.Vector2(x, y)
         self.initial_position = pygame.Vector2(self.position)
         self.velocity = pygame.Vector2()
+        self.real_color = real_color
         self.b = b
+        self.color = color
         self.acceleration = pygame.Vector2()
         self.maxspeed = 4
         self.maxforce = 1.5
+        self.flag_on_move = True
         # self.velocity = self.velocity.normalize() * self.maxspeed
 
     def apply_force(self, force):
@@ -44,6 +47,11 @@ class Particle:
         # Set zero acceleration
         self.acceleration = self.acceleration * 0
 
+        if self.position != self.initial_position:
+            self.flag_on_move = False
+        else:
+            self.flag_on_move = True
+
     def seek(self, target):
         # Calculate desired
         desired = target - self.position
@@ -68,16 +76,21 @@ class Particle:
             self.acceleration = pygame.Vector2()
             steer = pygame.Vector2()
     
-        return self.apply_force(steer)
+        return self.apply_force(steer/2)
     
     def repulsion(self, position):
         neg_desired = position - self.position
         try:
-            neg_desired = neg_desired.normalize() * self.maxspeed * 700
+            neg_desired = neg_desired.normalize() * self.maxspeed 
         except:
             neg_desired = pygame.Vector2()
         
         steer = neg_desired - self.velocity
+<<<<<<< HEAD
         steer = self.limit(self.maxforce * 700, steer)
         return self.apply_force((-steer / self.b) * 10)
+=======
+        steer = self.limit(self.maxforce, steer)
+        return self.apply_force((-steer / self.b))
+>>>>>>> faster_processing
 
