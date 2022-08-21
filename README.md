@@ -46,4 +46,6 @@ You will see the simulation above with image I provide. However, if you want sim
 
 - SHIFFMAN, D. The Nature of Code. Simulating Natural Systems With Processing, 2012. https://natureofcode.com/book/
 
+## Acknowledgment
 
+Thanks for Alexia Barbosa for permission to use all images in this repo.
