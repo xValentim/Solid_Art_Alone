@@ -86,11 +86,5 @@ class Particle:
             neg_desired = pygame.Vector2()
         
         steer = neg_desired - self.velocity
-<<<<<<< HEAD
-        steer = self.limit(self.maxforce * 700, steer)
-        return self.apply_force((-steer / self.b) * 10)
-=======
         steer = self.limit(self.maxforce, steer)
         return self.apply_force((-steer / self.b))
->>>>>>> faster_processing
-

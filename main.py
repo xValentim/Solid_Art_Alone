@@ -17,12 +17,6 @@ background = white
 ball_color = gray
 fps = 60
 
-<<<<<<< HEAD
-img = cv.imread("cic.png")
-img = cv.resize(img, [600, 600])
-cv.imshow('img', img)
-img_gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
-=======
 if len(sys.argv) != 2:
     print("Error Usage. You must type this form: python main.py path_image")
 else:
@@ -31,7 +25,6 @@ else:
     img = cv.imread(filename)
     img = cv.resize(img, [720, 720])
     img_gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
->>>>>>> faster_processing
 
     print(img.shape)
     t = 0
@@ -97,6 +90,3 @@ else:
         relogio.tick(fps)
         pygame.display.update()
     pygame.quit()
-
-
-
